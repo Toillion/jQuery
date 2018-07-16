@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<script src="jquery-3.3.1.min.js"></script>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+        a.boldText {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<script>
+    function DOMReady(jQuery) {
+        console.log("ready!");
+    }
+
+    function everythingReady(jQuery) {
+        console.log("everything ready!");
+    }
+
+    //This will call the DOMReady function after the DOM loads
+    $(document).ready(DOMReady);
+
+    //This calls everythingReady once images and iframes load
+    $(window).on("load", everythingReady);
+
+</script>
+
+<body>
+    <a href="http://jquery.com/">jQuery</a>
+
+
+</body>
+
+</html>
