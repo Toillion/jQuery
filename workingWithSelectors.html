@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<script src="jquery-3.3.1.min.js"></script>
+
+<script>
+    function DOMReady(jQuery) {
+        console.log("ready");
+
+        //getters & setters
+        //When the method is called with a value as an argument, it's referred to as a setter because it sets (or assigns) that value
+        //When the method is called with no argument, it gets (or reads) the value of the element
+        //getters return the requested value only for the first element in the selection, with the exception of .text()
+
+        $("h1").html("hello world"); //sets
+        console.log($("h1").html()); //gets
+
+
+        //Chaining
+        $("#content")
+            .find("h3")
+            .eq(2)
+            .html("new text for the third h3!");
+
+
+    }
+
+    $(document).ready(DOMReady);
+
+</script>
+
+<head>
+    <title>Selectors</title>
+</head>
+
+<body>
+
+    <a href="index.html">Index</a>
+    <br>
+    <a href="attributes.html">Attributes</a>
+    <br>
+    <a href="SelectingElements.hmtl">Selecting Elements</a>
+    <br>
+    <a href="https://learn.jquery.com/using-jquery-core/working-with-selections/">Working w/ Selectors</a>
+
+    <h1>h1</h1>
+
+    <div id="content">
+        <h3>1</h3>
+        <h3>2</h3>
+        <h3>3</h3>
+
+    </div>
+
+</body>
+
+</html>
