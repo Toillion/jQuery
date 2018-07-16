@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    function DOMReady(jQuery) {
+        console.log("ready");
+
+        //by Id
+        $("#selectById");
+
+        //by Class
+        $(".selectByClass");
+
+        //by Attribute
+        $("input[name='first_name']");
+
+        //by Compound CSS Selector
+        $("#contents ul.people li");
+
+        //by comma-seperated list
+        $("div.myClass, ul.people");
+
+        //Pseudo-Selectors
+        $("a.external:first");
+        $("tr:odd");
+
+        //select all input-like elements in a form
+        $("#myForm :input");
+        $("div:visible");
+
+        //All except the first three divs
+        $("div:gt(2)");
+
+        //all curently animated divs
+        $("div:animated");
+
+
+        //The more selectors you add, the more it affects the performance
+
+        //To test if a selection worked..
+        if ($("div.foo").length) {
+            console.log("selected");
+        }
+
+        //Save selection
+        //if you add divs later on, then you'll have to update this
+        var allDivs = $("div");
+
+
+
+        //Refining selections
+        $("div.foo").has("p"); //div.foo elements that contains <p> tags
+
+        $("h1").not(".bar"); // h1 elements that don't have a class of bar
+
+        $("ul li").filter(".current"); // unordered list ites w/ class of currents
+
+        $("ul li").first(); // just the first unordered list item
+
+        $("ul li").eq(5); // the sixth
+
+
+        //Selecting form elemnts
+
+        $("#form :checked"); // checks checkboxes, radios, selects
+
+        $("#form :disabled"); //targets <input> elements w/ the disabled attr
+        //for performance, it's better to do $("#form").filter(":disabled")
+
+        $("#form :enabled"); // does not have disabled attr
+        //same as disabled for performance
+
+        $("#form :input"); //selects all input, textarea, select, and button elements
+
+        $("#form :selected"); // targets any selected items in <option> elements
+        //best performance when using .filter
+
+
+        //pseudo selectors to select form-specific elements according to their type
+        /*
+        :password
+        :reset
+        :radio
+        :text
+        :submit
+        :checkbox
+        :button
+        :image
+        :file
+        */
+
+
+    }
+
+    $(document).ready(DOMReady);
+
+</script>
+
+<head>
+</head>
+
+<body>
+    <a href="index.html">Index</a>
+    <br>
+    <a href="attributes.html">Attributes</a>
+    <br>
+    <a href="https://learn.jquery.com/using-jquery-core/selecting-elements/">jQuery Selectors</a>
+
+    <p id="slectById">Select by id</p>
+    <p class="selectByClass">Select by class</p>
+
+    <div>this is a div</div>
+</body>
+
+</html>
