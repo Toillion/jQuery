@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<script src="jquery-3.3.1.min.js"></script>
+<meta charset="utf-8">
+
+
+<head>
+    <title>Attributes</title>
+</head>
+
+<script>
+    function DOMReady(jQuery) {
+        console.log("ready");
+
+        // The .attr() method acts as both a getter and a setter. As a setter, .attr() can accept either a key and a value, or an object containing one or more key/value pairs.
+
+        //As a setter
+        $("a").attr("href", "nowAllMyHrefsAreTheSame.html");
+
+        $("a").attr({
+            title: "Now all my titles are the same too",
+            href: "https://learn.jquery.com/using-jquery-core/attributes/"
+        });
+
+
+        //As a getter
+        var href = $("a").attr("href"); // Returns the href for the first a element in the document
+
+    }
+
+    // Calls when the DOM is ready
+    $(document).ready(DOMReady);
+
+</script>
+
+<body>
+    <a href="http://jquery.com/">jQuery</a>
+</body>
+</html
