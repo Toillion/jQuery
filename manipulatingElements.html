@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<script src="jquery-3.3.1.min.js"></script>
+    
+    <script>
+        
+        function DOMReady(jQuery){
+            
+            console.log("ready");
+            
+            // .html() get or set the html contents
+            $("#myDiv p:first").html("New <strong>1st</strong> paragraph");
+            
+            
+            // .text() get or set the text contents. HTML will be stripped
+//            $("#myDiv p:first").text("setting<em> the </em>text");
+            
+            
+            // .attr() get or set the value of the provided attribute
+            
+            
+            // .width() get or set the width in pixels of the 1st element in the selection
+            
+            
+            // .height()
+            
+            
+            // .position() get an object with position info
+            
+            
+            // .val() get or set the value of form elements
+            
+            
+            // Moving
+            //two approaches: Place the selected element(s) relative to another element
+            // Place an element relative to the selected element(s)
+            // .isnsertAfter .after .insertBefore .before() .appendTo() .append() .prependTo() .prepend()
+            
+            
+//            $(".first").after(".second"); // places second after first
+//            $(".first").insertAfter(".second"); // places first after second
+            
+            var li = $("#myList li:first").appendTo("#myList");
+            
+            
+            // Cloning
+            // .clone
+            $("#myList li").eq(1).clone().prependTo("#myList");            
+            
+            
+            // Removing
+            // .remove() - removes permanetly
+            // .detach() - if you need the data and events to persist
+            // .empty() - leave the element on the page but remove its contents
+            
+            $("#myList li").eq(2).remove();
+            
+            
+            
+            // Creating new elements
+            
+            var newElement = $( "<p>This is a new paragraph</p>" );
+            newElement.appendTo("#myDiv");
+            
+            // Creating a new element with an attribute object.
+            var another = $( "<a/>", {
+                html: "This is a <strong>new</strong> link",
+                "class": "new",
+                href: "foo.html"
+            });
+            
+            another.insertAfter("ul:last");
+            
+            
+            
+            var myItems = [];
+            var myList = $( "#myList" );
+ 
+            for ( var i = 0; i < 20; i++ ) {
+                myItems.push( "<li>item " + i + "</li>" );
+            }
+ 
+            myList.append( myItems.join( "" ) );
+            
+            
+            // Manipulating
+            
+            // Manipulating a single attribute.
+            $( "#myDiv a:first" ).attr( "href", "newDestination.html" );
+
+            // Manipulating multiple attributes.
+            $( "#myDiv a:first" ).attr({
+                href: "newDestination.html",
+                rel: "nofollow"
+            });
+            
+            // Using a function to determine an attribute's new value.
+            $( "#myDiv a:first" ).attr({
+                rel: "nofollow",
+                href: function( idx, href ) {
+                    return "/new/" + href;
+                }
+            });
+ 
+            $( "#myDiv a:first" ).attr( "href", function( idx, href ) {
+                return "/new/" + href;
+            });
+            
+            
+            
+            
+            
+        }
+        
+    
+    $(document).ready(DOMReady);
+        
+    </script>
+    
+    <head>
+        <title>Manipulating objects</title>
+    </head>
+    
+    <body>
+        
+        <a href="https://learn.jquery.com/using-jquery-core/manipulating-elements/">Manipulating Elements</a>
+        
+        <div id="myDiv">
+        
+            <p class="first">1st p</p>
+            <p class="second">2nd p</p>
+            <p class="third">3rd p</p>
+            
+            <ul id="myList">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            </ul>
+            
+        </div>
+        
+    </body>
+</html>
