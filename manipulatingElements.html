@@ -40,7 +40,7 @@
 //            $(".first").after(".second"); // places second after first
 //            $(".first").insertAfter(".second"); // places first after second
             
-            var li = $("#myList li:first").appendTo("#myList");
+            var $li = $("#myList li:first").appendTo("#myList");
             
             
             // Cloning
@@ -59,7 +59,7 @@
             
             // Creating new elements
             
-            var newElement = $( "<p>This is a new paragraph</p>" );
+            var $newElement = $( "<p>This is a new paragraph</p>" );
             newElement.appendTo("#myDiv");
             
             // Creating a new element with an attribute object.
@@ -74,7 +74,7 @@
             
             
             var myItems = [];
-            var myList = $( "#myList" );
+            var $myList = $( "#myList" );
  
             for ( var i = 0; i < 20; i++ ) {
                 myItems.push( "<li>item " + i + "</li>" );
