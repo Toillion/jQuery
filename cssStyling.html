@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <script src="jquery-3.3.1.min.js"></script>
+    
+    
+    <script>
+    
+        function DOMReady(jQuery){
+            
+            console.log('ready');
+        
+            // jQuery is useful for getting and setting css properties of elements
+            
+            // Getting
+            var $h1FontSize = $("h1").css("fontSize");
+            console.log($h1FontSize);
+            
+            // Setting
+            $("h1").css("fontSize", "25px");
+            
+            // Setting multiple properties
+            // CSS properties that usual have a hyphen should be camelCased in JS
+            $("h1").css({
+                fontSize: "20px",
+                color: "blue"
+            });
+            
+            
+            // You should try to avoid setting like this
+            // Instead use classes
+            var $h1 = $("h1");
+            
+            $h1.addClass("big");
+            $h1.removeClass("big");
+            $h1.toggleClass("big");
+            
+            if($h1.hasClass("big")){
+                
+            }
+            
+            
+            
+            // Dimensions
+            
+            // Sets the width of all <h1> elements.
+            $( "h1" ).width( "50px" );
+ 
+            // Gets the width of the first <h1> element.
+            $( "h1" ).width();
+ 
+            // Sets the height of all <h1> elements.
+            $( "h1" ).height( "50px" );
+ 
+            // Gets the height of the first <h1> element.
+            $( "h1" ).height();
+ 
+ 
+            // Returns an object containing position information for
+            // the first <h1> relative to its "offset (positioned) parent".
+            $( "h1" ).position();
+            
+            
+            
+            
+        }
+        
+        $(document).ready(DOMReady);
+    
+    </script>
+    
+    <head>
+        <title>Styling</title>
+    </head>
+    
+    <body>
+        
+        <h1>jQuery and CSS</h1>
+        
+        <a href="https://learn.jquery.com/using-jquery-core/css-styling-dimensions/">Css, Styling, & Dimensions</a>
+        
+        
+    </body>
+    
+    
+</html>
