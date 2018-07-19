@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    
+    <script>
+    
+        function DOMReady( jQuery ) {
+            
+            console.log("ready");
+            
+            // Storing and retrieving data related to an element
+            
+            $("#myDiv").data("keyName", { foo: "bar" });
+            
+            $("#myDiv").data("keyName"); // Returns { foo:bar }
+            
+
+            
+            // Storing a relationship between elements using .data()
+ 
+            $( "#myList li" ).each(function() {
+ 
+                var li = $( this );
+                var div = li.find( "div.content" );
+ 
+                li.data( "contentDiv", div );
+ 
+            });
+ 
+            // Later, we don't have to find the div again;
+            // we can just read it from the list item's data
+            var firstLi = $( "#myList li:first" );
+            firstLi.data( "contentDiv" ).html( "new content" );
+            
+            
+        }
+        
+        $(document).ready(DOMReady);
+    
+    </script>
+
+    <head>
+        <title>Data Methods</title>
+    </head>
+    
+    <body>
+    
+        <a href="https://learn.jquery.com/using-jquery-core/data-methods/">Data Methods</a>
+    
+        <div id="myDiv">
+        
+            <ul id="myList">
+                <li><div class="content>">1</div> </li>
+                <li> <div class="content">2</div> </li>
+                <li>3</li>
+            </ul>
+        
+        </div>
+        
+    </body>
+
+
+</html>
