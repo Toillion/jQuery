@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <script src="jquery-3.3.1.min.js"></script>
+
+    <script>
+    
+        function DOMReady(jQuery)
+        {
+            console.log("ready");
+            
+            
+            // A few of jQuery's event methods include
+            // .click() .focus() .blur() .change() .on()
+            
+            
+            $("p").click(function() {
+               console.log('paragraph clicked'); 
+            });
+            
+            //Equivalent event using on()
+            $("p").on("click", function() {
+               console.log('paragraph clicked'); 
+            });
+            
+            // elements created after will not have the events attached
+            $("<p>hello</p>").appendTo(document.body);
+            
+           
+            
+            //Inside the event handler function
+            //Every event handling function receives an event object which
+            //contains many properties and methods
+            
+            $("#myDiv").on("click", function( eventObject ){
+               
+                console.log(eventObject.pageX + " " + eventObject.pageY);       console.log("type: " + eventObject.type);
+                console.log("which: " + eventObject.which);
+                console.log("data: " + eventObject.data);
+                console.log("target: " + eventObject.target);
+                console.log("namespace: " + eventObject.namespace);
+                console.log("timeStamp: " + eventObject.timeStamp);
+                console.log("prevent default: " + eventObject.preventDefault());
+                //stopPrpagation
+                
+                
+                
+            });
+            
+            
+            // Event setup using the `.on()` method with data
+            $( "input" ).on(
+                "change",
+                { foo: "bar" }, // Associate data with event binding
+                function( eventObject ) {
+                    console.log("An input value has changed! ", eventObject.data.foo);
+                });
+            
+            //Multiple event responses
+            $("button").on("click change", function(){
+               //clicked or changed 
+            });
+           
+            $("#myDiv2").on({
+                "click": function() { console.log("clicked"); },
+                "mouseover": function() { console.log("mouseover"); }
+            });
+            
+            
+            
+            // Tearing down event listeners
+            // use .off
+            
+            //tear down all click handerlers on a selection
+//            $("p").off("click");
+
+            
+            //Setting up events to only run once
+            // .one()
+            $("p").one("click", firstClick);
+            
+            function firstClick() {
+                console.log("first click");
+                
+                $(this).on("click", function() {
+                    console.log("clicked again");
+                })
+            }
+            
+        }
+        
+        
+        $(document).ready(DOMReady);
+    
+    </script>
+    
+    <head>
+        <title>Event Basics</title>
+    </head>
+    
+    <body>
+    
+        <a href="https://learn.jquery.com/events/event-basics/">Event Basics</a>
+        
+        <p>Paragraph</p>
+        
+        <div id="myDiv">My Div</div>
+        <div id="myDiv2">My Div</div>
+        
+        <form>
+            <input>
+            <button>button</button>
+        </form>
+    
+    </body>
+    
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <script src="jquery-3.3.1.min.js"></script>
+    
+    <script>
+    
+        function DOMReady (jQuery){
+            console.log("Ready");
+            
+           /* .index() is a method on jQuery objects that's generally used to search for a given element within the jQuery object that it's called on. This method has four different signatures with different semantics that can be confusing*/
+            
+            // .index w/ no arguments
+
+            var foo = $( "#foo1" );
+            console.log( foo.index() ); //1
+            
+            var listItem = $("li");
+            console.log(listItem.index()); //1
+            
+            var div = $("div");
+            console.log(div.index()); //0
+            
+            
+            //more but don't care right now
+            
+        }
+        
+        $(document).ready(DOMReady);
+        
+    </script>
+
+    <head>
+        <title>Index Function</title>
+    </head>
+
+    
+    <body>
+    
+        <ul>
+            <div></div>
+            <li id="foo1">foo</li>
+            <li id="bar1">bar</li>
+            <li id="baz1">baz</li>
+            <div></div>
+        </ul>
+    
+    </body>
+    
+    
+</html>
