@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <script src="../jquery-3.3.1.min.js"></script>
+    
+    <script>
+    
+        function DOMReady(jQuery)
+        {
+            console.log('Ready');
+            
+            
+//            The .hover() method lets you pass one or two functions
+//            to be run when the mouseenter and mouseleave events occur
+//            on an element. If you pass one function, it will be run 
+//            for both events; if you pass two functions, the first will
+//            run for mouseenter, and the second will run for mouseleave
+            
+            $("p").hover(function() {
+                //do something
+            })
+        }
+        
+        
+        $(document).ready(DOMReady);
+        
+    </script>
+    
+    <head>
+        <title>jQuery Event Helpers</title>
+    </head>
+    
+    <body>
+    
+        <a href="https://learn.jquery.com/events/">Event Helpers</a>
+        
+        <p>paragraph</p>
+    
+    </body>
+    
+    
+</html>
