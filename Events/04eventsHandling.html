@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+    <script src="../jquery-3.3.1.min.js"></script>
+
+    <script>
+        
+        function DOMREady(){
+            
+            //simple event binding
+            // When any <p> tag is clicked, we expect to see '<p> was clicked' in the console.
+            $( "p" ).on( "click", function() {
+                console.log( "<p> was clicked" );
+            });
+            
+            
+            // many events. one handler
+            // When a user focuses on or changes any input element,
+            // we expect a console message bind to multiple events
+            $( "div" ).on( "mouseenter mouseleave", function() {
+                console.log( "mouse hovered over or left a div" );
+            });
+        
+            // many events. many handlers
+            $( "div" ).on({
+             mouseenter: function() {
+                 console.log( "hovered over a div" );
+             },
+             mouseleave: function() {
+                 console.log( "mouse left a div" );
+             },
+             click: function() {
+                 console.log( "clicked on a div" );
+             }
+            });
+            
+            
+            // the event object
+            $( "div" ).on( "click", function( event ) {
+                console.log( "event object:" );
+                console.dir( event );
+            });
+            
+            
+            // passing data to the event handler
+            $( "p" ).on( "click", {
+                foo: "bar"
+            }, function( event ) {
+                console.log( "event data: " + event.data.foo + " (should be 'bar')" );
+            });
+            
+            
+            //binding events to elements that don't exist yet
+            $( "ul" ).on( "click", "li", function() {
+                console.log( "Something in a <ul> was clicked, and we detected that it was an <li> element." );
+            });
+            
+            
+            // only run events once
+            $( "p" ).one( "click", function() {
+                console.log( "You just clicked this for the first time!" );
+                $( this ).click(function() {
+                    console.log( "You have clicked this before!" );
+                });
+            });
+            
+            
+            // disconnecting events
+            // Unbinding all click handlers on a selection
+            $( "p" ).off( "click" );
+            
+            // Unbinding a particular click handler, using a reference to the function
+            var foo = function() {
+                console.log( "foo" );
+            };
+            
+            var bar = function() {
+                console.log( "bar" );
+            };
+            
+            $( "p" ).on( "click", foo ).on( "click", bar );
+            
+            // foo will stay bound to the click event
+            $( "p" ).off( "click", bar );
+            
+            
+            
+        }
+        
+        $(document).ready(DOMREady);
+        
+    </script>
+
+    <head>
+        <title>Handling Events</title>
+    </head>
+    
+    <body>
+    
+        <a href="https://learn.jquery.com/events/handling-events/#simple-event-binding">Handling Events</a>
+        <br>
+        
+        
+    </body>
+    
+    
+</html>
