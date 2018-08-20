@@ -1,0 +1,60 @@
+<!doctype html>
+<head>
+    <script src="../jquery-3.3.1.min.js"></script>
+    
+    <script>
+    
+        function DOMReady(jQuery)
+        {
+            console.log('ready');
+            
+            $("#one").on("click", function(event){
+               alert(event.currentTarget.getAttribute("id")); 
+            });
+            
+            
+//            $("button").on("click", function(event){
+//               alert(event.currentTarget.getAttribute("id")); 
+//            });
+          
+            $("body").on("click", "button", function(event){
+              alert(event.currentTarget.getAttribute("id")); 
+            });
+            
+            
+            // Logging an event's information
+            $( "form" ).on( "submit", function( event ) {
+ 
+//                 Prevent the form's default submission.
+                event.preventDefault();
+ 
+                // Log the event object for inspectin'
+                console.log( event );
+ 
+                // Make an AJAX request to submit the form data
+            });
+        }
+        
+        
+        $(document).ready(DOMReady);
+        
+    </script>
+
+    <head>
+        <title>Events Intro</title>
+    </head>
+    
+    <body>
+        
+        <a href="https://learn.jquery.com/events/introduction-to-events/">Events Intro</a>
+        
+        <button id="one">one</button>
+        <button id="two">two</button>
+        
+        <form id="myForm">
+            <button id="formButton">submit</button>
+        </form>
+        
+    </body>
+    
+</head>
