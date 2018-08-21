@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <script src="../jquery-3.3.1.min.js"></script>
+    
+    <script>
+        
+        function DOMReady( jQuery ){
+            console.log('ready');
+            
+            
+            // Event delegation allows us to attach a single event listener, to a parent
+            // element, that will fire for all descendants matching a selector, whether 
+            // those descendants exist now or are added in the future
+            
+            // Attach a directly bound event handler
+            // This works fine but there are drawbacks
+            // If you add a new item it won't add the hadler to it
+           /* $( "#list a" ).on( "click", function( event ) {
+                event.preventDefault();
+                console.log( $( this ).text() );
+            });*/
+            
+            // Add a new element on to our existing list
+//            $( "#list" ).append( "<li><a href='http://newdomain.com'>Item #5</a></li>" );
+            
+            // the click bubbles up the DOM tree
+            // a - li - ul #list - div #container - body - html - root
+            
+            
+            // Attach a delegated event handler
+            // The 2nd (a) parameter tells the handler to listen for a specific event
+            $( "#list" ).on( "click", "a", function( event ) {
+                event.preventDefault();
+                console.log( $( this ).text() );
+            });
+            
+            $( "#list" ).append( "<li><a href='http://newdomain.com'>Item #5</a></li>" );
+            
+        }
+        
+        
+        $(document).ready(DOMReady);
+        
+    </script>
+    
+    <head>
+        <title>Eveent Delegation</title>
+    </head>
+    
+    <body>
+        
+        <a href="https://learn.jquery.com/events/event-delegation/">Event Delegation</a>
+        
+
+        <div id="container">
+            <ul id="list">
+                <li><a href="http://domain1.com">Item #1</a></li>
+                <li><a href="/local/path/1">Item #2</a></li>
+                <li><a href="/local/path/2">Item #3</a></li>
+                <li><a href="http://domain4.com">Item #4</a></li>
+            </ul>
+        </div>
+
+    </body>
+    
+</html>
